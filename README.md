@@ -2,6 +2,10 @@
 
 RAG pipeline benchmarking toolkit with measurable retrieval quality, answer quality, and latency reporting.
 
+## UI Preview
+
+![ragbench dashboard overview](docs/assets/dashboard-overview.png)
+
 ## What It Does
 
 1. Runs benchmark suites against RAG outputs.
