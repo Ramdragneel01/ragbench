@@ -4,7 +4,9 @@
 
 1. API liveness: `/health`
 2. API readiness: `/ready`
-3. Frontend availability: root route `/`
+3. API liveness alias: `/healthz`
+4. API readiness alias: `/readyz`
+5. Frontend availability: root route `/`
 
 ## Routine Commands
 
@@ -23,6 +25,7 @@ npm run build
 1. If run creation fails, inspect API logs for payload validation errors.
 2. If readiness fails, verify database path permissions.
 3. If frontend cannot fetch API, verify `VITE_API_BASE_URL` and CORS origin.
+4. If `429` responses spike, verify client retry/backoff behavior and rate-limit settings.
 
 ## Recovery
 

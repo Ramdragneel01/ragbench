@@ -4,6 +4,8 @@
 
 1. `GET /health` -> liveness check.
 2. `GET /ready` -> readiness check with database connectivity status.
+3. `GET /healthz` -> compatibility alias for liveness checks.
+4. `GET /readyz` -> compatibility alias for readiness checks.
 
 ## Benchmark Runs
 
@@ -36,3 +38,24 @@
   ]
 }
 ```
+
+## Error Contract
+
+All API errors return a normalized payload:
+
+```json
+{
+  "error": {
+    "code": "rate_limited",
+    "message": "rate_limited",
+    "request_id": "f6aafcd2-25f2-4f5e-b0f6-c7446199758f"
+  }
+}
+```
+
+Common status codes:
+
+1. `400` bad request and validation failures.
+2. `401` unauthorized when API key is configured and missing/invalid.
+3. `413` payload too large.
+4. `429` rate limited (includes `Retry-After: 60`).
